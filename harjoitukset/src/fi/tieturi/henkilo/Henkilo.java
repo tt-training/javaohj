@@ -1,9 +1,9 @@
 package fi.tieturi.henkilo;
 
 public class Henkilo {
-	private String etunimi = null;
-	private String sukunimi = null;
-	private int ika = 0;
+	private String etunimi;
+	private String sukunimi;
+	private long ika;
 
 	public Henkilo() {
 		
@@ -13,7 +13,11 @@ public class Henkilo {
 		super();
 		this.etunimi = etunimi;
 		this.sukunimi = sukunimi;
-		this.ika = ika;
+		setIka(ika);
+	}
+	
+	public void vanhene() {
+		++ika;
 	}
 
 	public String getEtunimi() {
@@ -33,10 +37,14 @@ public class Henkilo {
 	}
 
 	public int getIka() {
-		return ika;
+		return (int)ika;
 	}
 
 	public void setIka(int ika) {
+		if (ika < 0) {
+			System.err.println("Ikä ei voi ola alle 0 : " + ika);
+			return;
+		}
 		this.ika = ika;
 	}
 
