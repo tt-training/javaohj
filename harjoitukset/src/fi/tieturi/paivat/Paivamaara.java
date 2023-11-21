@@ -10,6 +10,11 @@ public class Paivamaara {
         this.kuukausi = kuukausi;
         this.vuosi = vuosi;
     }
+    
+    public static Paivamaara nyt() {
+    	Paivamaara tanaan = new Paivamaara(21, 11, 2023);
+    	return tanaan;
+    }
 
     public int getPaiva() {
         return paiva;

@@ -1,6 +1,6 @@
 package fi.tieturi.henkilo;
 
-public class Henkilo {
+public class Henkilo extends Object {
 	private String etunimi;
 	private String sukunimi;
 	private long ika;
@@ -50,7 +50,7 @@ public class Henkilo {
 
 	@Override
 	public String toString() {
-		return "Henkilo [etunimi=" + etunimi + ", sukunimi=" + sukunimi + ", ika=" + ika + "]";
+		return "Henkilo [etunimi=" + etunimi + ", sukunimi=" + sukunimi + ", ika=" + getIka() + "]";
 	}
 	
 }
