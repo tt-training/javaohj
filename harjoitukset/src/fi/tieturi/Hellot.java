@@ -1,11 +1,23 @@
 package fi.tieturi;
 
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class Hellot {
 
 	public static void main(String[] args) {
-		harjoitus2(args);
+		Date d = new Date();
+		System.out.println(d);
+		d = new Date(2023-1900, 11-1, 21);
+		
+		Calendar cal = Calendar.getInstance();
+		
+		cal = new GregorianCalendar(2023, Calendar.NOVEMBER, 21, 15, 12);
+		
+		System.out.println(d);
+		//harjoitus2(args);
 	}
 	
 	// Hello
