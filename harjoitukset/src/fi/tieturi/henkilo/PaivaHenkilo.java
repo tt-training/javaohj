@@ -1,9 +1,11 @@
 package fi.tieturi.henkilo;
 
+import java.util.Optional;
+
 import fi.tieturi.paivat.Paivamaara;
 
 public class PaivaHenkilo extends Henkilo {
-	private Paivamaara syntymaAika; 
+	private Optional<Paivamaara> syntymaAika; 
 	
 	public PaivaHenkilo() {
 		this(null, null);
@@ -11,25 +13,29 @@ public class PaivaHenkilo extends Henkilo {
 	
 	public PaivaHenkilo(String etunimi, String sukunimi) {
 		super(etunimi, sukunimi, 0);
-		syntymaAika = new Paivamaara(1, 1, 1970);
+		syntymaAika = Optional.of(new Paivamaara(1, 1, 1970));
 	}
 	
 	public Paivamaara getSyntymaAika() {
-		return syntymaAika;
+//		if (syntymaAika.isPresent())
+//			return syntymaAika.get();
+//		else 
+//			return null;
+		return syntymaAika.orElse(null);
 	}
 
 	public void setSyntymaAika(Paivamaara syntymaAika) {
-		this.syntymaAika = syntymaAika;
+		this.syntymaAika = Optional.ofNullable(syntymaAika);
 	}
 
 	@Override
 	public int getIka() {
 		Paivamaara tanaan = Paivamaara.nyt();
 		int vuosiNyt = tanaan.getVuosi();
-		if (syntymaAika == null) {
+		if (syntymaAika.isEmpty()) {
 			return super.getIka();
 		}
-		return vuosiNyt - syntymaAika.getVuosi();
+		return vuosiNyt - syntymaAika.get().getVuosi();
 	}
 	
 	@Override
